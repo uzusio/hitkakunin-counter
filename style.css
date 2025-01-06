@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f9fa;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.input-area {
+    padding: 10px;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #ccc;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.group h4 {
+    margin: 0 0 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+}
+
+.input-area button {
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    background: #ffffff;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+.input-area button:hover {
+    background: #f0f0f0;
+    border-color: #bbb;
+}
+
+.download-area {
+    margin-top: 10px;
+}
+
+#download {
+    padding: 12px 20px;
+    font-size: 14px;
+    background: #28a745;
+    color: #fff;
+    border: 2px solid #28a745;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+#download:hover {
+    background: #fff;
+    color: #28a745;
+}
+
+.table-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-top: 1px solid #ccc;
+    overflow: hidden; /* 子要素のスクロールを制御 */
+}
+
+.table-header {
+    padding: 10px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+    position: sticky; /* タイトルを固定 */
+    top: 0; /* 上部に固定 */
+    z-index: 2; /* 他の要素より前面に */
+}
+
+.table-scroll {
+    flex: 1;
+    overflow-y: auto; /* テーブル部分だけスクロール可能 */
+    max-height: calc(100% - 50px); /* 必要に応じて調整 */
+}
+
+#recordTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#recordTable th {
+    position: sticky; /* テーブルのヘッダーを固定 */
+    top: 0;
+    z-index: 1;
+    background: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+#recordTable td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+
+.stats-area {
+    padding: 10px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+}
+
+.stats-area h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.stats-area ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.stats-area li {
+    margin-bottom: 5px;
+}
+
+.stats-area span {
+    font-weight: bold;
+}

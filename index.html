@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヒット確認カウンター</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="input-area">
+            <div class="group">
+                <h4>ヒット</h4>
+                <button id="hitWithKnuckle">ヒット + 弱ナックル</button>
+                <button id="hitNoKnuckle">ヒット + 弱ナックル未入力</button>
+            </div>
+            <div class="group">
+                <h4>ガード</h4>
+                <button id="guardWithKnuckle">ガード + 弱ナックル</button>
+                <button id="guardNoKnuckle">ガード + 弱ナックル未入力</button>
+            </div>
+            <div class="download-area">
+                <button id="download">CSVダウンロード</button>
+            </div>
+        </div>
+        <div class="stats-area">
+            <h3>集計情報</h3>
+            <ul>
+                <li>合計回数: <span id="totalCount">0</span></li>
+                <li>成功率: <span id="successRate">0%</span></li>
+                <li>入れ込み暴発率: <span id="commitRate">0%</span> （ガード時の成否）</li>
+            </ul>
+        </div>
+        <div class="table-area">
+            <div class="table-header">
+                <h3>記録一覧</h3>
+            </div>
+            <div class="table-scroll">
+                <table id="recordTable">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>ヒット/ガード</th>
+                            <th>弱ナックル入力</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- データ行がここに追加される -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
