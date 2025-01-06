@@ -9,17 +9,14 @@
 <body>
     <div class="container">
         <div class="input-area">
-            <div class="group">
-                <h4>ヒット</h4>
+            <div class="counter-buttons">
                 <button id="hitWithKnuckle">ヒット + 弱ナックル</button>
-                <button id="hitNoKnuckle">ヒット + 弱ナックル未入力</button>
-            </div>
-            <div class="group">
-                <h4>ガード</h4>
                 <button id="guardWithKnuckle">ガード + 弱ナックル</button>
-                <button id="guardNoKnuckle">ガード + 弱ナックル未入力</button>
+                <button id="hitNoKnuckle">ヒット + 未入力</button>
+                <button id="guardNoKnuckle">ガード + 未入力</button>
             </div>
-            <div class="download-area">
+            <div class="options">
+                <input type="text" id="knuckleNameInput" placeholder="練習したい技名を変更" />
                 <button id="download">CSVダウンロード</button>
             </div>
         </div>
@@ -41,7 +38,7 @@
                         <tr>
                             <th>Timestamp</th>
                             <th>ヒット/ガード</th>
-                            <th>弱ナックル入力</th>
+                            <th id="knuckleHeader">弱ナックル入力</th>
                         </tr>
                     </thead>
                     <tbody>

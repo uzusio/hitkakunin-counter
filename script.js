@@ -1,5 +1,28 @@
 // データ保存用の配列
 let records = [];
+let knuckleName = "弱ナックル"; // 初期値
+
+// テーブルとボタンの要素を取得
+const knuckleHeader = document.getElementById("knuckleHeader");
+const knuckleNameInput = document.getElementById("knuckleNameInput");
+
+// ボタンラベルを更新する関数
+const updateButtonLabels = () => {
+    document.getElementById("hitWithKnuckle").textContent = `ヒット + ${knuckleName}`;
+    document.getElementById("hitNoKnuckle").textContent = `ヒット + ${knuckleName}未入力`;
+    document.getElementById("guardWithKnuckle").textContent = `ガード + ${knuckleName}`;
+    document.getElementById("guardNoKnuckle").textContent = `ガード + ${knuckleName}未入力`;
+    knuckleHeader.textContent = `${knuckleName}入力`;
+};
+
+// テキスト入力のイベントリスナー
+knuckleNameInput.addEventListener("input", (event) => {
+    knuckleName = event.target.value || "弱ナックル"; // 空の場合はデフォルト値
+    updateButtonLabels();
+});
+
+// 初期表示のボタンラベルを更新
+updateButtonLabels();
 
 // テーブルのtbody要素
 const recordTableBody = document.getElementById("recordTable").querySelector("tbody");
@@ -24,7 +47,7 @@ const recordData = (hitGuard, weakKnuckle) => {
     console.log("データ記録:", records);
 };
 
-// テーブルに新しい行を「先頭に追加」する関数
+// テーブルに新しい行を追加する関数
 const addRecordToTable = (record) => {
     const newRow = document.createElement("tr");
 
@@ -37,13 +60,12 @@ const addRecordToTable = (record) => {
     newRow.appendChild(hitGuardCell);
 
     const weakKnuckleCell = document.createElement("td");
-    weakKnuckleCell.textContent = record.weakKnuckle === 1 ? "入力" : "未入力";
+    weakKnuckleCell.textContent = record.weakKnuckle === 1 ? knuckleName : `${knuckleName}未入力`;
     newRow.appendChild(weakKnuckleCell);
 
     // 先頭に追加
     recordTableBody.prepend(newRow);
 };
-
 
 // 集計情報を更新する関数
 const updateStats = () => {
@@ -87,7 +109,7 @@ const downloadCSV = () => {
 
     // CSV形式に変換
     const csvContent = "data:text/csv;charset=utf-8," +
-        ["Timestamp,Hit/Guard,Weak Knuckle"]
+        ["Timestamp,Hit/Guard,Additional Input"]
             .concat(records.map(r => `${r.timestamp},${r.hitGuard},${r.weakKnuckle}`))
             .join("\n");
 

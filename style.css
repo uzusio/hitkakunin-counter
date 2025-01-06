@@ -23,50 +23,60 @@ body {
 }
 
 .input-area {
-    padding: 10px;
-    background: #f9f9f9;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 1px solid #ccc;
-}
-
-.group {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px; /* カウンターとオプション間の余白 */
+    background: #f9f9f9;
+    border-radius: 6px;
+    padding: 15px;
+    border: 1px solid #ddd;
 }
 
-.group h4 {
-    margin: 0 0 5px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #555;
+/* カウンターボタン部分 */
+.counter-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2列のグリッド */
+    gap: 10px; /* ボタンの間隔 */
+    margin-bottom: 20px; /* オプション部分との間隔 */
 }
 
-.input-area button {
-    padding: 10px 15px;
-    font-size: 14px;
+.counter-buttons button {
+    width: 100%; /* グリッドのセル全体を使う */
+    padding: 15px;
+    font-size: 16px;
     cursor: pointer;
     background: #ffffff;
     color: #333;
     border: 1px solid #ddd;
     border-radius: 6px;
+    text-align: center;
     transition: all 0.2s ease-in-out;
 }
 
-.input-area button:hover {
+.counter-buttons button:hover {
     background: #f0f0f0;
     border-color: #bbb;
 }
 
-.download-area {
-    margin-top: 10px;
+/* オプション部分 */
+.options {
+    display: flex;
+    justify-content: space-between; /* 入力欄とボタンを左右に配置 */
+    gap: 10px; /* 入力欄とボタンの間隔 */
+    align-items: center; /* 縦方向を中央揃え */
 }
 
-#download {
+.options input {
+    flex: 1; /* 入力欄を横に広げる */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.options button {
     padding: 12px 20px;
-    font-size: 14px;
+    font-size: 16px;
     background: #28a745;
     color: #fff;
     border: 2px solid #28a745;
@@ -75,7 +85,7 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
-#download:hover {
+.options button:hover {
     background: #fff;
     color: #28a745;
 }
