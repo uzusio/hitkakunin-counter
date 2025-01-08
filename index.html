@@ -30,15 +30,17 @@
             <ul>
                 <li>合計回数: <span id="totalCount">0</span></li>
                 <li>成功率: <span id="successRate">0%</span></li>
-                <li>入れ込み暴発率: <span id="commitRate">0%</span></li>
+                <li>実質確認率: <span id="adjustedRate" class="hover-info"
+                        data-tooltip="(成功率 - 50%) × 2">0%</span></li>
+                <li>入れ込み暴発率: <span id="commitRate" class="hover-info" data-tooltip="ガード時に技入力をした割合">0%</span>
+                </li>
             </ul>
         </div>
         <div class="table-area">
             <div class="table-header">
                 <h3>記録一覧</h3>
-                <button id="undo" class="undo-button">
+                <button id="undo" class="undo-button hover-info" data-tooltip="一つ前の記録を取り消し">
                     <img src="back_button.svg" alt="取り消しボタン">
-                    <span class="undo-text">取り消し</span> 
                 </button>
             </div>
             <div class="table-scroll">
@@ -48,7 +50,7 @@
                             <th>Timestamp</th>
                             <th>ヒット/ガード</th>
                             <th>入力状況</th>
-                            <th>結果</th> 
+                            <th>結果</th>
                         </tr>
                     </thead>
                     <tbody>

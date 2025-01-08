@@ -266,6 +266,34 @@ body {
     color: #c62828;
 }
 
+/* 共通ホバースタイル */
+.hover-info {
+    position: relative;
+    cursor: pointer; /* ホバー可能に見せる */
+}
+
+.hover-info::after {
+    content: attr(data-tooltip); /* data-tooltip属性を利用 */
+    position: absolute;
+    top: 50%;
+    left: 110%; /* 要素の右側に配置 */
+    transform: translateY(-50%);
+    background: #333;
+    color: #fff;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 5px;
+    border-radius: 4px;
+    white-space: nowrap; /* テキストが折り返されないように */
+    display: none; /* 初期状態は非表示 */
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hover-info:hover::after {
+    display: block; /* ホバー時に表示 */
+}
+
 .author-footer {
     position: fixed;
     bottom: 6px;

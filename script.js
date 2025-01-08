@@ -92,16 +92,35 @@ const getResultText = (hitGuard, input) => {
 // 集計情報を更新する関数
 const updateStats = () => {
     const totalCount = records.length;
-    const successCount = records.filter(r => r.hitGuard === 1 && r.input === 1).length;
+
+    // 成功条件: (ヒット→入力) または (ガード→未入力)
+    const successCount = records.filter(
+        r => (r.hitGuard === 1 && r.input === 1) || (r.hitGuard === 0 && r.input === 0)
+    ).length;
+
+    // ガードの数（入力があったかどうかは関係ない）
     const guardCount = records.filter(r => r.hitGuard === 0).length;
+
+    // 入れ込み暴発の回数（ガード→入力）
     const commitCount = records.filter(r => r.hitGuard === 0 && r.input === 1).length;
 
+    // 成功率の計算
     const successRate = totalCount > 0 ? ((successCount / totalCount) * 100).toFixed(2) : 0;
+
+    // 入れ込み暴発率の計算
     const commitRate = guardCount > 0 ? ((commitCount / guardCount) * 100).toFixed(2) : 0;
 
+    // 実質確認率の計算
+    let adjustedRate = ((successRate - 50) * 2).toFixed(2);
+
+    // 実質確認率が0以下の場合は0に固定
+    adjustedRate = Math.max(adjustedRate, 0);
+
+    // 集計情報を更新
     totalCountElement.textContent = totalCount;
     successRateElement.textContent = `${successRate}%`;
     commitRateElement.textContent = `${commitRate}%`;
+    document.getElementById("adjustedRate").textContent = `${adjustedRate}%`;
 };
 
 // Timestampをフォーマットする関数
