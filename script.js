@@ -26,8 +26,15 @@ const recordData = (hitGuard, input) => {
 const addRecordToTable = (record) => {
     const newRow = document.createElement("tr");
 
+    // 成功/失敗パターンに応じてクラスを付与
+    if ((record.hitGuard === 1 && record.input === 1) || (record.hitGuard === 0 && record.input === 0)) {
+        newRow.classList.add("success-row"); // 成功パターン
+    } else {
+        newRow.classList.add("failure-row"); // 失敗パターン
+    }
+
     const timestampCell = document.createElement("td");
-    timestampCell.textContent = record.timestamp;
+    timestampCell.textContent = formatTimestamp(record.timestamp); // フォーマットされたタイムスタンプ
     newRow.appendChild(timestampCell);
 
     const hitGuardCell = document.createElement("td");
@@ -38,7 +45,25 @@ const addRecordToTable = (record) => {
     inputCell.textContent = record.input === 1 ? "入力" : "未入力";
     newRow.appendChild(inputCell);
 
+    const resultCell = document.createElement("td");
+    resultCell.textContent = getResultText(record.hitGuard, record.input); // 結果を設定
+    newRow.appendChild(resultCell);
+
     recordTableBody.prepend(newRow);
+};
+
+// 結果を判定する関数
+const getResultText = (hitGuard, input) => {
+    if (hitGuard === 1 && input === 1) {
+        return "ヒット確認";
+    } else if (hitGuard === 0 && input === 0) {
+        return "ガード確認";
+    } else if (hitGuard === 1 && input === 0) {
+        return "技出ない";
+    } else if (hitGuard === 0 && input === 1) {
+        return "入れ込み暴発";
+    }
+    return "";
 };
 
 // 集計情報を更新する関数
@@ -54,6 +79,18 @@ const updateStats = () => {
     totalCountElement.textContent = totalCount;
     successRateElement.textContent = `${successRate}%`;
     commitRateElement.textContent = `${commitRate}%`;
+};
+
+// Timestampをフォーマットする関数
+const formatTimestamp = (isoString) => {
+    const date = new Date(isoString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 };
 
 // 各ボタンのイベント設定

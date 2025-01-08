@@ -34,10 +34,9 @@ body {
 
 /* カウンターボタン部分 */
 .counter-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2列のグリッド */
-    gap: 10px; /* ボタンの間隔 */
-    margin-bottom: 20px; /* オプション部分との間隔 */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* 行間のスペース */
 }
 
 .counter-buttons button {
@@ -56,6 +55,52 @@ body {
 .counter-buttons button:hover {
     background: #f0f0f0;
     border-color: #bbb;
+}
+
+/* 成功パターンのボタン */
+.success-buttons {
+    display: flex;
+    gap: 10px; /* ボタン間のスペース */
+}
+
+.success-buttons button {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #e0f7fa; /* 薄い青色 */
+    color: #00796b;
+    border: 1px solid #00796b;
+    border-radius: 6px;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.success-buttons button:hover {
+    background: #b2ebf2; /* 少し濃い青色 */
+}
+
+/* 失敗パターンのボタン */
+.failure-buttons {
+    display: flex;
+    gap: 10px; /* ボタン間のスペース */
+}
+
+.failure-buttons button {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #ffebee; /* 薄い赤色 */
+    color: #c62828;
+    border: 1px solid #c62828;
+    border-radius: 6px;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.failure-buttons button:hover {
+    background: #ffcdd2; /* 少し濃い赤色 */
 }
 
 /* オプション部分 */
@@ -161,4 +206,16 @@ body {
 
 .stats-area span {
     font-weight: bold;
+}
+
+/* 成功パターンの行 */
+.success-row {
+    background-color: #e0f7fa; /* 薄い青色 */
+    color: #00796b;
+}
+
+/* 失敗パターンの行 */
+.failure-row {
+    background-color: #ffebee; /* 薄い赤色 */
+    color: #c62828;
 }

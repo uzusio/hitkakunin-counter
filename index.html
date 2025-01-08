@@ -12,10 +12,14 @@
     <div class="container">
         <div class="input-area">
             <div class="counter-buttons">
-                <button id="hitInput">ヒット → 入力（ヒット確認）</button>
-                <button id="hitNoInput">ヒット → 未入力（技出ない）</button>
-                <button id="guardInput">ガード → 入力（入れ込み暴発）</button>
-                <button id="guardNoInput">ガード → 未入力（ガード確認）</button>
+                <div class="success-buttons">
+                    <button id="hitInput">ヒット → 入力（ヒット確認）</button>
+                    <button id="guardNoInput">ガード → 未入力（ガード確認）</button>
+                </div>
+                <div class="failure-buttons">
+                    <button id="hitNoInput">ヒット → 未入力（技出ない）</button>
+                    <button id="guardInput">ガード → 入力（入れ込み暴発）</button>
+                </div>
             </div>
             <div class="options">
                 <button id="download">CSVダウンロード</button>
@@ -40,6 +44,7 @@
                             <th>Timestamp</th>
                             <th>ヒット/ガード</th>
                             <th>入力状況</th>
+                            <th>結果</th> 
                         </tr>
                     </thead>
                     <tbody>
