@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ヒット確認カウンター</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="input-area">
             <div class="counter-buttons">
-                <button id="hitWithKnuckle">ヒット + 弱ナックル</button>
-                <button id="guardWithKnuckle">ガード + 弱ナックル</button>
-                <button id="hitNoKnuckle">ヒット + 未入力</button>
-                <button id="guardNoKnuckle">ガード + 未入力</button>
+                <button id="hitInput">ヒット → 入力（ヒット確認）</button>
+                <button id="hitNoInput">ヒット → 未入力（技出ない）</button>
+                <button id="guardInput">ガード → 入力（入れ込み暴発）</button>
+                <button id="guardNoInput">ガード → 未入力（ガード確認）</button>
             </div>
             <div class="options">
-                <input type="text" id="knuckleNameInput" placeholder="練習したい技名を変更" />
                 <button id="download">CSVダウンロード</button>
             </div>
         </div>
@@ -25,7 +26,7 @@
             <ul>
                 <li>合計回数: <span id="totalCount">0</span></li>
                 <li>成功率: <span id="successRate">0%</span></li>
-                <li>入れ込み暴発率: <span id="commitRate">0%</span> （ガード時の成否）</li>
+                <li>入れ込み暴発率: <span id="commitRate">0%</span></li>
             </ul>
         </div>
         <div class="table-area">
@@ -38,7 +39,7 @@
                         <tr>
                             <th>Timestamp</th>
                             <th>ヒット/ガード</th>
-                            <th id="knuckleHeader">弱ナックル入力</th>
+                            <th>入力状況</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,4 +51,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

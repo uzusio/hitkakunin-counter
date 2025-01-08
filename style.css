@@ -61,7 +61,7 @@ body {
 /* オプション部分 */
 .options {
     display: flex;
-    justify-content: space-between; /* 入力欄とボタンを左右に配置 */
+    justify-content: center; /* 入力欄とボタンを左右に配置 */
     gap: 10px; /* 入力欄とボタンの間隔 */
     align-items: center; /* 縦方向を中央揃え */
 }
@@ -75,19 +75,20 @@ body {
 }
 
 .options button {
-    padding: 12px 20px;
+    padding: 4px 20px;
     font-size: 16px;
-    background: #28a745;
+    background: #58d174;
     color: #fff;
-    border: 2px solid #28a745;
+    border: 2px solid #58d174;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    width: 100%;
 }
 
 .options button:hover {
     background: #fff;
-    color: #28a745;
+    color: #58d174;
 }
 
 .table-area {
