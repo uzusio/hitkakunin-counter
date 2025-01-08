@@ -22,6 +22,29 @@ const recordData = (hitGuard, input) => {
     updateStats();
 };
 
+// 最新のデータを削除する関数
+const undoLastRecord = () => {
+    if (records.length === 0) {
+        // alert("削除できる記録がありません！");
+        return;
+    }
+
+    // 最新のデータを削除
+    records.pop();
+
+    // テーブルの一番上の行を削除
+    const firstRow = recordTableBody.querySelector("tr");
+    if (firstRow) {
+        recordTableBody.removeChild(firstRow);
+    }
+
+    // 集計情報を更新
+    updateStats();
+};
+
+// 取り消しボタンにイベントリスナーを設定
+document.getElementById("undo").addEventListener("click", undoLastRecord);
+
 // テーブルに新しい行を追加する関数
 const addRecordToTable = (record) => {
     const newRow = document.createElement("tr");
@@ -106,12 +129,22 @@ const downloadCSV = () => {
         return;
     }
 
-    const csvContent = "data:text/csv;charset=utf-8," +
-        ["Timestamp,Hit/Guard,Input Status"]
-            .concat(records.map(r => `${r.timestamp},${r.hitGuard},${r.input}`))
-            .join("\n");
+    // CSVヘッダーに「結果」を追加
+    const csvContent = ["Timestamp,Hit/Guard,Input Status,Result"]
+        .concat(
+            records.map(r => {
+                const resultText = getResultText(r.hitGuard, r.input); // 結果テキストを生成
+                return `${r.timestamp},${r.hitGuard === 1 ? "ヒット" : "ガード"},${r.input === 1 ? "入力" : "未入力"},${resultText}`;
+            })
+        )
+        .join("\n");
 
-    const encodedUri = encodeURI(csvContent);
+    // UTF-8 BOMを追加して文字化けを防止
+    const bom = "\uFEFF"; // BOMを追加
+    const encodedCsv = bom + csvContent;
+
+    // CSVをダウンロード
+    const encodedUri = "data:text/csv;charset=utf-8," + encodeURIComponent(encodedCsv);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "counter_data.csv");

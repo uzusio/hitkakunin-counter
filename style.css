@@ -146,12 +146,58 @@ body {
 }
 
 .table-header {
+    display: flex;
+    justify-content: flex-start; /* 左右に配置 */
+    align-items: center; /* 垂直方向の中央揃え */
     padding: 10px;
     background: #f9f9f9;
     border-bottom: 1px solid #ccc;
     position: sticky; /* タイトルを固定 */
     top: 0; /* 上部に固定 */
     z-index: 2; /* 他の要素より前面に */
+    gap: 10px;
+}
+
+/* 取り消しボタンのスタイル */
+.undo-button {
+    position: relative; /* 子要素を相対的に配置するため */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center; /* ボタン内でアイコンを中央揃え */
+}
+
+.undo-button img {
+    width: 24px; /* アイコンの大きさを調整 */
+    height: 24px;
+    transition: transform 0.2s ease;
+}
+
+.undo-button:hover img {
+    transform: scale(1.1); /* ホバー時に少し拡大 */
+}
+
+/* 「取り消し」のテキストを非表示にしておく */
+.undo-text {
+    display: none;
+    position: absolute;
+    top: 50%; /* ボタンの中央に位置するよう調整 */
+    left: 35px; /* アイコンの右側に配置 */
+    transform: translateY(-50%);
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    white-space: nowrap; /* テキストが折り返されないようにする */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ホバー時にテキストを表示 */
+.undo-button:hover .undo-text {
+    display: block;
 }
 
 .table-scroll {
@@ -218,4 +264,24 @@ body {
 .failure-row {
     background-color: #ffebee; /* 薄い赤色 */
     color: #c62828;
+}
+
+.author-footer {
+    position: fixed;
+    bottom: 6px;
+    right: 5vw;
+    font-size: 12px;
+    color: #666;
+    font-family: Arial, sans-serif;
+    padding: 2px 5px;
+}
+
+.author-footer a {
+    text-decoration: none; /* 下線を消す */
+    color: #666;
+    transition: color 0.2s ease; /* ホバー時の色変更をスムーズに */
+}
+
+.author-footer a:hover {
+    color: #007bff; /* ホバー時の濃い青色 */
 }
